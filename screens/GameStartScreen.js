@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     padding: 16,
     marginHorizontal: 24,
-    backgroundColor: "#72063c",
+    backgroundColor: "#4e0329",
     borderRadius: 8,
     elevation: 4, // Elevation is used to Setting up Showdow on Android.
     // For IOS the Following Properties is used to settup the shadow.
