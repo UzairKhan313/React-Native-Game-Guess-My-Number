@@ -1,9 +1,9 @@
-import { View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import PrimaryButton from "../Components/PrimaryButton";
 
 function GameStartScreen() {
   return (
-    <View>
+    <View style={styles.inputContainer}>
       <TextInput />
       <PrimaryButton>Reset</PrimaryButton>
       <PrimaryButton>Confirm</PrimaryButton>
@@ -11,3 +11,19 @@ function GameStartScreen() {
   );
 }
 module.exports = GameStartScreen;
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    marginTop: 100,
+    padding: 16,
+    marginHorizontal: 24,
+    backgroundColor: "#72063c",
+    borderRadius: 8,
+    elevation: 4, // Elevation is used to Setting up Showdow on Android.
+    // For IOS the Following Properties is used to settup the shadow.
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.25,
+  },
+});
