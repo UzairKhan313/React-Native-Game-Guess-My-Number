@@ -1,11 +1,9 @@
-import { StyleSheet, View, Text, FlatList, Button } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+
+import GameStartScreen from "./screens/GameStartScreen";
 
 export default function App() {
-  return (
-    <View>
-      <Text>Hello world</Text>
-    </View>
-  );
+  return <GameStartScreen />;
 }
 
 const styles = StyleSheet.create({});
