@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, View, TextInput, Alert } from "react-native";
 import PrimaryButton from "../Components/PrimaryButton";
+import Colors from "../constants/colors";
 
 function GameStartScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     padding: 16,
     marginHorizontal: 24,
-    backgroundColor: "#4e0329",
+    backgroundColor: Colors.primary800,
     borderRadius: 8,
     elevation: 4, // Elevation is used to Setting up Showdow on Android.
     // For IOS the Following Properties is used to settup the shadow.
@@ -68,8 +69,8 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     fontSize: 32,
-    borderBottomColor: "#ddb52f",
-    color: "#ddb52f",
+    borderBottomColor: Colors.accent500,
+    color: Colors.accent500,
     borderBottomWidth: 2,
     marginVertical: 8,
     fontWeight: "bold",
