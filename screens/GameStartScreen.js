@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { StyleSheet, View, TextInput, Alert } from "react-native";
+import { StyleSheet, View, TextInput, Alert, Text } from "react-native";
+import Title from "../Components/ui/Title";
 import PrimaryButton from "../Components/ui/PrimaryButton";
+import { Card } from "../Components/ui/Card";
 import Colors from "../constants/colors";
 
 function GameStartScreen({ onPickNumber }) {
@@ -27,43 +29,41 @@ function GameStartScreen({ onPickNumber }) {
     onPickNumber(choosenNmber);
   }
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCorrect={false}
-        onChangeText={inputNumberHandler}
-        value={enteredNumber}
-      />
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <Card>
+        <Text style={styles.instructionText}>Enter a Number</Text>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCorrect={false}
+          onChangeText={inputNumberHandler}
+          value={enteredNumber}
+        />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={confrimInputHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={confrimInputHandler}>Confirm</PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 }
 module.exports = GameStartScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    padding: 16,
-    marginHorizontal: 24,
-    backgroundColor: Colors.primary800,
-    borderRadius: 8,
-    elevation: 4, // Elevation is used to Setting up Showdow on Android.
-    // For IOS the Following Properties is used to settup the shadow.
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
+    alignItems: "center",
+  },
+  instructionText: {
+    color: Colors.accent500,
+    fontSize: 20,
   },
   numberInput: {
     height: 50,
