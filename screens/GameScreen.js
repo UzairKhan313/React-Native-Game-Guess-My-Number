@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 import Title from "../Components/ui/Title";
 import NumberContainer from "../Components/game/NumberContainer";
@@ -16,18 +16,14 @@ function generateRandomBetween(min, max, exclude) {
 let minBoundry = 1;
 let maxBoundry = 100;
 
-function GameScreen(props) {
-  const initialGuess = generateRandomBetween(
-    minBoundry,
-    maxBoundry,
-    props.choosenNumber
-  );
+function GameScreen({ choosenNumber, onGameOver }) {
+  const initialGuess = generateRandomBetween(1, 100, choosenNumber);
   const [currentGuess, setCurrenGuess] = useState(initialGuess);
 
   function nextGuessHandler(direction) {
     if (
-      (direction === "lower" && currentGuess < props.choosenNumber) ||
-      (direction === "greater" && currentGuess > props.choosenNumber)
+      (direction === "lower" && currentGuess < choosenNumber) ||
+      (direction === "greater" && currentGuess > choosenNumber)
     ) {
       Alert.alert("Don't Lie!.", "You Know this is wrong...", [
         { text: "Sorry", style: "cancel" },
@@ -46,6 +42,11 @@ function GameScreen(props) {
     );
     setCurrenGuess(newRandNumber);
   }
+  useEffect(() => {
+    if (currentGuess === choosenNumber) {
+      onGameOver();
+    }
+  }, [currentGuess, choosenNumber, onGameOver]);
 
   return (
     <View style={styles.screen}>
