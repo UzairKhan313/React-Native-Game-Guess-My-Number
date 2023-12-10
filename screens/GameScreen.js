@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 
-// Importing ICONs From Expo.
-// Default Library comes with expo";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons} from "@expo/vector-icons";
+
 
 // Importing Custom Components..
 import Title from "../Components/ui/Title";
@@ -65,12 +64,12 @@ function GameScreen({ choosenNumber, onGameOver }) {
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-              <Ionicons name="md-remove" size={24} color="white" />
+             -
             </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-              <Ionicons name="md-add" size={24} color="white" />
+              +
             </PrimaryButton>
           </View>
         </View>
