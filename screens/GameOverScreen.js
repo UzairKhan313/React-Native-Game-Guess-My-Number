@@ -16,9 +16,9 @@ export const GameOverScreen = () => {
       </View>
       <View>
         <Text style={styles.summeryText}>
-          Your Phone Needed <Text style={styles.highlight}>X</Text> Rounds To
+          Your Phone Needed <Text style={styles.highlight}> X </Text> Rounds To
           Guess A Number
-          <Text style={styles.highlight}>Y</Text>
+          <Text style={styles.highlight}> Y </Text>
         </Text>
       </View>
       <PrimaryButton>Start New Game</PrimaryButton>
