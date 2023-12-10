@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
-
-import { Ionicons} from "@expo/vector-icons";
-
+import { StyleSheet, View, Text, Alert, FlatList } from "react-native";
 
 // Importing Custom Components..
 import Title from "../Components/ui/Title";
@@ -26,6 +23,7 @@ let maxBoundry = 100;
 function GameScreen({ choosenNumber, onGameOver }) {
   const initialGuess = generateRandomBetween(1, 100, choosenNumber);
   const [currentGuess, setCurrenGuess] = useState(initialGuess);
+  const [guessRound, setGuessRounds] = useState([initialGuess]);
 
   function nextGuessHandler(direction) {
     if (
@@ -48,12 +46,18 @@ function GameScreen({ choosenNumber, onGameOver }) {
       currentGuess
     );
     setCurrenGuess(newRandNumber);
+    setGuessRounds((prevState) => [newRandNumber, ...prevState]);
   }
   useEffect(() => {
     if (currentGuess === choosenNumber) {
       onGameOver();
     }
   }, [currentGuess, choosenNumber, onGameOver]);
+
+  useEffect(() => {
+    minBoundry = 1;
+    maxBoundry = 100;
+  }, []);
 
   return (
     <View style={styles.screen}>
@@ -64,7 +68,7 @@ function GameScreen({ choosenNumber, onGameOver }) {
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-             -
+              -
             </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
@@ -74,6 +78,13 @@ function GameScreen({ choosenNumber, onGameOver }) {
           </View>
         </View>
       </Card>
+      <View>
+        <FlatList
+          data={guessRound}
+          renderItem={(data) => <Text>{data.item}</Text>}
+          keyExtractor={(item) => item}
+        />
+      </View>
     </View>
   );
 }
