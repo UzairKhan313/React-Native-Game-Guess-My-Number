@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
 
 // Importing ICONs From Expo.
-// import { IonIcons } from "@expo/vector-icons";
+// Default Library comes with expo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 // Importing Custom Components..

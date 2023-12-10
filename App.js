@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+
 import GameStartScreen from "./screens/GameStartScreen";
 import GameScreen from "./screens/GameScreen";
 import Colors from "./constants/colors";
@@ -10,6 +11,7 @@ import { GameOverScreen } from "./screens/GameOverScreen";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+
 
   function pickNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
@@ -44,7 +46,6 @@ export default function App() {
     </LinearGradient>
   );
 }
-
 const styles = StyleSheet.create({
   rootScreen: { flex: 1 },
   backgroundImage: { opacity: 0.15 },
