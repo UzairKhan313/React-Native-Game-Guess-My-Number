@@ -60,7 +60,7 @@ function GameScreen({ choosenNumber, onGameOver }) {
     maxBoundry = 100;
   }, []);
 
-  const guessRoundsList = guessRound.length
+  const guessRoundsList = guessRound.length;
 
   return (
     <View style={styles.screen}>
@@ -84,7 +84,12 @@ function GameScreen({ choosenNumber, onGameOver }) {
       <View style={styles.listContainer}>
         <FlatList
           data={guessRound}
-          renderItem={(data) => <GuessLogItem roundedNumber={guessRoundsList - data.index} guess={data.item}/>}
+          renderItem={(data) => (
+            <GuessLogItem
+              roundedNumber={guessRoundsList - data.index}
+              guess={data.item}
+            />
+          )}
           keyExtractor={(item) => item}
         />
       </View>
@@ -95,7 +100,7 @@ function GameScreen({ choosenNumber, onGameOver }) {
 module.exports = GameScreen;
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, padding: 24, paddingVertical: 50 },
+  screen: { flex: 1, padding: 24, paddingVertical: 50, alignItems: "center" },
   instructionText: {
     color: Colors.accent500,
     fontSize: 20,
@@ -105,8 +110,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   buttonContainer: { flex: 1 },
-  listContainer:{
-    flex:1,
-    padding:16
+  listContainer: {
+    flex: 1,
+    padding: 16,
   },
 });
