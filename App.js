@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 
 import GameStartScreen from "./screens/GameStartScreen";
 import GameScreen from "./screens/GameScreen";
@@ -41,6 +42,8 @@ export default function App() {
     setGuessRounds(0);
   }
   return (
+    <>
+    <StatusBar style="light"/>
     <LinearGradient
       colors={[Colors.primary700, Colors.accent500]}
       style={styles.rootScreen}
@@ -54,6 +57,7 @@ export default function App() {
         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
+    </>
   );
 }
 const styles = StyleSheet.create({
